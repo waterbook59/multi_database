@@ -1,0 +1,32 @@
+{
+  "totalResultsAvailable": "218",
+  "totalResultsReturned": "20",
+  "hits": [{
+    "index": "1",
+    "name": "ニベアクリーム",
+    "description": "素晴らしいクリーム！",
+    "image": {
+      "small": "小さい画像サイズのurl",
+      "medium": "中程度の画像サイズのurl"
+    }
+  },
+    {
+      "index": "2",
+      "name": "ニベアクリーム2",
+      "description": "素晴らしいクリーム！2",
+      "image": {
+        "small": "小さい画像サイズのurl2",
+        "medium": "中程度の画像サイズのurl2"
+      }
+    },
+    {
+      "index": "3",
+      "name": "ニベアクリーム3",
+      "description": "素晴らしいクリーム！3",
+      "image": {
+        "small": "小さい画像サイズのurl3",
+        "medium": "中程度の画像サイズのurl3"
+      }
+    }
+  ]
+}
