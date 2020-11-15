@@ -57,14 +57,13 @@ class ProductHits {
     };
   }
 
-
   ///fromMapで自分で作ったモデルクラスのリストへ変換する時は手動で修正
   /// hits: map['hits'] as List<Product>,のままだと当然エラー
   /// hitsはリスト形式なので、mapメソッドで分解して格納
-  //      hits: (map['hits'] as List)
-  //          ?.map(( dynamic e ) =>
-  //        e == null ? null : Product.fromMap(e as Map<String, dynamic>))
-  //          ?.toList(),
+//      hits: (map['hits'] as List)
+//          ?.map(( dynamic e ) =>
+//        e == null ? null : Product.fromMap(e as Map<String, dynamic>))
+//          ?.toList(),
 
   // ignore: sort_constructors_first
   factory ProductHits.fromMap(Map<String, dynamic> map) {
@@ -80,3 +79,7 @@ class ProductHits {
 
 //</editor-fold>
 }
+
+
+
+
