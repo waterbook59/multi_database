@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:moor/moor.dart';
 import 'package:moor_ffi/moor_ffi.dart';
+import 'package:mutidatabaseapp/models/db/product_info_dao.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 part 'product_info_database.g.dart';
@@ -25,11 +26,13 @@ class ProductRecordImages extends Table{
   TextColumn get medium => text()();
 
   @override
-  Set<Column> get primaryKey => {productId};
+  Set<Column> get primaryKey => {imageId};
 }
 
+///結合用テーブル
 
-@UseMoor(tables:[ProductRecords,ProductRecordImages])
+
+@UseMoor(tables:[ProductRecords,ProductRecordImages],daos: [ProductInfoDao])
 class MyProductInfoDB extends _$MyProductInfoDB {
   MyProductInfoDB() : super(_openConnection());
 

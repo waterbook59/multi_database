@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+///DB保存用クラスProductRecordImageはdata_models内に作らない
+
 class ProductImage {
 //  final int productId;
 //  final int imageId;

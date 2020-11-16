@@ -17,6 +17,7 @@ class ProductInfoDao extends DatabaseAccessor<MyProductInfoDB> with _$ProductInf
   }
 //入れる(2行以上の挿入はbatch)
 //List<ProductRecord> productsの引数のところはテーブル名とかぶるのでproducts
+  ///List<ProductRecord> として入ってきた値をproductRecordsとproductRecordImagesに分ける
   Future<void> insertDB(List<ProductRecord> products) async {
     ///productRecordsテーブル
     await batch((batch) {
@@ -49,9 +50,9 @@ class ProductInfoDao extends DatabaseAccessor<MyProductInfoDB> with _$ProductInf
         return allProductRecords;
       });
 
-  //imageはProductRecordでclear,insertしてるので、読み込みのみにしてみる
+  //imageはProductRecordでclear,insertしてるので、読込みのみにしてみる
   Future<List<ProductRecordImage>> readImageFromDB(
-      List<ProductRecord> products) =>
+      List<ProductRecordImage> productImages) =>
 //      transaction(() async {
 //        await clearDB();
 //        await insertDB(products);
