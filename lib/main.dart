@@ -3,8 +3,12 @@ import 'package:mutidatabaseapp/view_model/data_registration_view_model.dart';
 import 'package:mutidatabaseapp/views/data_registration/data_registration_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'models/db/product_info_database.dart';
+
+MyProductInfoDB myProductInfoDB;
 
 void main() {
+  myProductInfoDB = MyProductInfoDB();
   runApp(
           ChangeNotifierProvider<DataRegistrationViewModel>(
             create: (context)=>DataRegistrationViewModel(),
