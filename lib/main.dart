@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mutidatabaseapp/view_model/data_registration_view_model.dart';
 import 'package:mutidatabaseapp/views/data_registration/data_registration_screen.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(
+          ChangeNotifierProvider<DataRegistrationViewModel>(
+            create: (context)=>DataRegistrationViewModel(),
+            child: MyApp(),
+  ));
+
 }
 
 class MyApp extends StatelessWidget {
