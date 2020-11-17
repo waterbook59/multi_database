@@ -544,7 +544,7 @@ class $ProductRecordImagesTable extends ProductRecordImages
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {productId};
+  Set<GeneratedColumn> get $primaryKey => {imageId};
   @override
   ProductRecordImage map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
@@ -557,6 +557,254 @@ class $ProductRecordImagesTable extends ProductRecordImages
   }
 }
 
+class ProductWithImage extends DataClass
+    implements Insertable<ProductWithImage> {
+  final int idProductWithImage;
+  final int product;
+  final int image;
+  ProductWithImage(
+      {@required this.idProductWithImage,
+      @required this.product,
+      @required this.image});
+  factory ProductWithImage.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
+      {String prefix}) {
+    final effectivePrefix = prefix ?? '';
+    final intType = db.typeSystem.forDartType<int>();
+    return ProductWithImage(
+      idProductWithImage: intType.mapFromDatabaseResponse(
+          data['${effectivePrefix}id_product_with_image']),
+      product:
+          intType.mapFromDatabaseResponse(data['${effectivePrefix}product']),
+      image: intType.mapFromDatabaseResponse(data['${effectivePrefix}image']),
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || idProductWithImage != null) {
+      map['id_product_with_image'] = Variable<int>(idProductWithImage);
+    }
+    if (!nullToAbsent || product != null) {
+      map['product'] = Variable<int>(product);
+    }
+    if (!nullToAbsent || image != null) {
+      map['image'] = Variable<int>(image);
+    }
+    return map;
+  }
+
+  ProductWithImagesCompanion toCompanion(bool nullToAbsent) {
+    return ProductWithImagesCompanion(
+      idProductWithImage: idProductWithImage == null && nullToAbsent
+          ? const Value.absent()
+          : Value(idProductWithImage),
+      product: product == null && nullToAbsent
+          ? const Value.absent()
+          : Value(product),
+      image:
+          image == null && nullToAbsent ? const Value.absent() : Value(image),
+    );
+  }
+
+  factory ProductWithImage.fromJson(Map<String, dynamic> json,
+      {ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return ProductWithImage(
+      idProductWithImage: serializer.fromJson<int>(json['idProductWithImage']),
+      product: serializer.fromJson<int>(json['product']),
+      image: serializer.fromJson<int>(json['image']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'idProductWithImage': serializer.toJson<int>(idProductWithImage),
+      'product': serializer.toJson<int>(product),
+      'image': serializer.toJson<int>(image),
+    };
+  }
+
+  ProductWithImage copyWith({int idProductWithImage, int product, int image}) =>
+      ProductWithImage(
+        idProductWithImage: idProductWithImage ?? this.idProductWithImage,
+        product: product ?? this.product,
+        image: image ?? this.image,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ProductWithImage(')
+          ..write('idProductWithImage: $idProductWithImage, ')
+          ..write('product: $product, ')
+          ..write('image: $image')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => $mrjf($mrjc(
+      idProductWithImage.hashCode, $mrjc(product.hashCode, image.hashCode)));
+  @override
+  bool operator ==(dynamic other) =>
+      identical(this, other) ||
+      (other is ProductWithImage &&
+          other.idProductWithImage == this.idProductWithImage &&
+          other.product == this.product &&
+          other.image == this.image);
+}
+
+class ProductWithImagesCompanion extends UpdateCompanion<ProductWithImage> {
+  final Value<int> idProductWithImage;
+  final Value<int> product;
+  final Value<int> image;
+  const ProductWithImagesCompanion({
+    this.idProductWithImage = const Value.absent(),
+    this.product = const Value.absent(),
+    this.image = const Value.absent(),
+  });
+  ProductWithImagesCompanion.insert({
+    this.idProductWithImage = const Value.absent(),
+    @required int product,
+    @required int image,
+  })  : product = Value(product),
+        image = Value(image);
+  static Insertable<ProductWithImage> custom({
+    Expression<int> idProductWithImage,
+    Expression<int> product,
+    Expression<int> image,
+  }) {
+    return RawValuesInsertable({
+      if (idProductWithImage != null)
+        'id_product_with_image': idProductWithImage,
+      if (product != null) 'product': product,
+      if (image != null) 'image': image,
+    });
+  }
+
+  ProductWithImagesCompanion copyWith(
+      {Value<int> idProductWithImage, Value<int> product, Value<int> image}) {
+    return ProductWithImagesCompanion(
+      idProductWithImage: idProductWithImage ?? this.idProductWithImage,
+      product: product ?? this.product,
+      image: image ?? this.image,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (idProductWithImage.present) {
+      map['id_product_with_image'] = Variable<int>(idProductWithImage.value);
+    }
+    if (product.present) {
+      map['product'] = Variable<int>(product.value);
+    }
+    if (image.present) {
+      map['image'] = Variable<int>(image.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductWithImagesCompanion(')
+          ..write('idProductWithImage: $idProductWithImage, ')
+          ..write('product: $product, ')
+          ..write('image: $image')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ProductWithImagesTable extends ProductWithImages
+    with TableInfo<$ProductWithImagesTable, ProductWithImage> {
+  final GeneratedDatabase _db;
+  final String _alias;
+  $ProductWithImagesTable(this._db, [this._alias]);
+  final VerificationMeta _idProductWithImageMeta =
+      const VerificationMeta('idProductWithImage');
+  GeneratedIntColumn _idProductWithImage;
+  @override
+  GeneratedIntColumn get idProductWithImage =>
+      _idProductWithImage ??= _constructIdProductWithImage();
+  GeneratedIntColumn _constructIdProductWithImage() {
+    return GeneratedIntColumn('id_product_with_image', $tableName, false,
+        hasAutoIncrement: true, declaredAsPrimaryKey: true);
+  }
+
+  final VerificationMeta _productMeta = const VerificationMeta('product');
+  GeneratedIntColumn _product;
+  @override
+  GeneratedIntColumn get product => _product ??= _constructProduct();
+  GeneratedIntColumn _constructProduct() {
+    return GeneratedIntColumn(
+      'product',
+      $tableName,
+      false,
+    );
+  }
+
+  final VerificationMeta _imageMeta = const VerificationMeta('image');
+  GeneratedIntColumn _image;
+  @override
+  GeneratedIntColumn get image => _image ??= _constructImage();
+  GeneratedIntColumn _constructImage() {
+    return GeneratedIntColumn(
+      'image',
+      $tableName,
+      false,
+    );
+  }
+
+  @override
+  List<GeneratedColumn> get $columns => [idProductWithImage, product, image];
+  @override
+  $ProductWithImagesTable get asDslTable => this;
+  @override
+  String get $tableName => _alias ?? 'product_with_images';
+  @override
+  final String actualTableName = 'product_with_images';
+  @override
+  VerificationContext validateIntegrity(Insertable<ProductWithImage> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id_product_with_image')) {
+      context.handle(
+          _idProductWithImageMeta,
+          idProductWithImage.isAcceptableOrUnknown(
+              data['id_product_with_image'], _idProductWithImageMeta));
+    }
+    if (data.containsKey('product')) {
+      context.handle(_productMeta,
+          product.isAcceptableOrUnknown(data['product'], _productMeta));
+    } else if (isInserting) {
+      context.missing(_productMeta);
+    }
+    if (data.containsKey('image')) {
+      context.handle(
+          _imageMeta, image.isAcceptableOrUnknown(data['image'], _imageMeta));
+    } else if (isInserting) {
+      context.missing(_imageMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {idProductWithImage};
+  @override
+  ProductWithImage map(Map<String, dynamic> data, {String tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
+    return ProductWithImage.fromData(data, _db, prefix: effectivePrefix);
+  }
+
+  @override
+  $ProductWithImagesTable createAlias(String alias) {
+    return $ProductWithImagesTable(_db, alias);
+  }
+}
+
 abstract class _$MyProductInfoDB extends GeneratedDatabase {
   _$MyProductInfoDB(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   $ProductRecordsTable _productRecords;
@@ -565,6 +813,9 @@ abstract class _$MyProductInfoDB extends GeneratedDatabase {
   $ProductRecordImagesTable _productRecordImages;
   $ProductRecordImagesTable get productRecordImages =>
       _productRecordImages ??= $ProductRecordImagesTable(this);
+  $ProductWithImagesTable _productWithImages;
+  $ProductWithImagesTable get productWithImages =>
+      _productWithImages ??= $ProductWithImagesTable(this);
   ProductInfoDao _productInfoDao;
   ProductInfoDao get productInfoDao =>
       _productInfoDao ??= ProductInfoDao(this as MyProductInfoDB);
@@ -572,5 +823,5 @@ abstract class _$MyProductInfoDB extends GeneratedDatabase {
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [productRecords, productRecordImages];
+      [productRecords, productRecordImages, productWithImages];
 }

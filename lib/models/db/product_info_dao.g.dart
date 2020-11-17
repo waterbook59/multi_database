@@ -10,4 +10,6 @@ mixin _$ProductInfoDaoMixin on DatabaseAccessor<MyProductInfoDB> {
   $ProductRecordsTable get productRecords => attachedDatabase.productRecords;
   $ProductRecordImagesTable get productRecordImages =>
       attachedDatabase.productRecordImages;
+  $ProductWithImagesTable get productWithImages =>
+      attachedDatabase.productWithImages;
 }

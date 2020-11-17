@@ -6,7 +6,7 @@ import 'package:mutidatabaseapp/data_models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:mutidatabaseapp/data_models/product_hits.dart';
 import 'package:mutidatabaseapp/main.dart';
-import 'package:mutidatabaseapp/models/db/product_info_dao.dart';
+
 import 'package:mutidatabaseapp/models/db/product_info_database.dart';
 import 'package:mutidatabaseapp/utils/extensions.dart';
 
@@ -38,6 +38,7 @@ class BarcodeRepository {
   Future<List<Product>> insertAndReadFromDB(
       Map<String, dynamic> responseBody) async {
     final productInfoDao = myProductInfoDB.productInfoDao;
+//        myProductInfoDB.productInfoDao;
 //    final products = ProductHits.fromMap(responseBody).hits;
 
     //1.responseBody(json)をモデルクラス(List<Product>)へ変更

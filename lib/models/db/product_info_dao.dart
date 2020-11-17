@@ -3,9 +3,11 @@ import 'package:mutidatabaseapp/models/db/product_info_database.dart';
 
 part 'product_info_dao.g.dart';
 
-@UseDao(tables:[ProductRecords,ProductRecordImages])
+@UseDao(tables:[ProductRecords,ProductRecordImages,ProductWithImages])
 class ProductInfoDao extends DatabaseAccessor<MyProductInfoDB> with _$ProductInfoDaoMixin{
   ProductInfoDao(MyProductInfoDB infoDB) : super(infoDB);
+
+
 
 //DB空にしてからapiServiceのデータを書き込む
 //１つ１つのクエリを普通に書いて、2つ以上のクエリを1つとして実行=>transaction
@@ -59,7 +61,7 @@ class ProductInfoDao extends DatabaseAccessor<MyProductInfoDB> with _$ProductInf
 //        //最後だけ読み込みして結果を返すのでreturn
 //        //ゲッターなのでallArticleRecordsの後ろは()いらない
 //        return
-          allProductRecordImages;
+  allProductRecordImages;
 //      });
 
 

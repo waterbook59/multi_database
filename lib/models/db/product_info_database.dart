@@ -30,16 +30,24 @@ class ProductRecordImages extends Table{
 }
 
 ///結合用テーブル
+  class ProductWithImages extends Table{
+  IntColumn get idProductWithImage => integer().autoIncrement()();
+  IntColumn get product => integer()();
+  IntColumn get image => integer()();
+}
 
 
-@UseMoor(tables:[ProductRecords,ProductRecordImages],daos: [ProductInfoDao])
+@UseMoor(tables:[ProductRecords,ProductRecordImages,ProductWithImages],daos:[
+  ProductInfoDao])
 class MyProductInfoDB extends _$MyProductInfoDB {
   MyProductInfoDB() : super(_openConnection());
+
 
   @override
   int get schemaVersion => 1;
 
 }
+
 
 LazyDatabase _openConnection() {
 
